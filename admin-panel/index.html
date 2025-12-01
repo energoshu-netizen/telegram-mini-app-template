@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .status { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Мое Mini App</h1>
+    <p class="status">✅ Фронтенд работает!</p>
+    <p>Backend: <span id="backend-status">Проверка...</span></p>
+    
+    <script>
+        fetch('http://localhost:3000/api/health')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('backend-status').textContent = '✅ Работает';
+            })
+            .catch(() => {
+                document.getElementById('backend-status').textContent = '❌ Ошибка';
+            });
+    </script>
+</body>
+</html>

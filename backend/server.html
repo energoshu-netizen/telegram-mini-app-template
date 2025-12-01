@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Mock</title>
+</head>
+<body>
+    <h1>🚀 Backend Mock Service</h1>
+    <p>Это временный бэкенд на nginx</p>
+    <script>
+        // Эмуляция API
+        if (window.parent !== window) {
+            window.parent.postMessage({
+                type: 'backend-status',
+                status: 'healthy',
+                service: 'backend-mock'
+            }, '*');
+        }
+    </script>
+</body>
+</html>

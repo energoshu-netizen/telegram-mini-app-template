@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS tables (
+  id BIGSERIAL PRIMARY KEY,
+  label VARCHAR(50) NOT NULL,
+  capacity INTEGER DEFAULT 2 NOT NULL,
+  location VARCHAR(255),
+  deleted_at TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS ux_tables_label_active ON tables (label) WHERE deleted_at IS NULL;
+CREATE INDEX IF NOT EXISTS idx_tables_capacity ON tables (capacity);

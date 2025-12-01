@@ -1,0 +1,10 @@
+{
+  "name": "coffee-and-code",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["frontend", "backend", "admin-panel"],
+  "scripts": {
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down"
+  }
+}

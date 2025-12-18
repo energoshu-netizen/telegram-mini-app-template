@@ -11,10 +11,15 @@ import './App.css'
 
 export default function App() {
   const { tg } = useTelegram()
+
   useEffect(() => {
-    tg.ready()
-    tg.expand()
+    // SDK уже инициализируется в хуке,
+    // но мы можем выполнять дополнительные действия здесь
+    if (tg) {
+      tg.expand()
+    }
   }, [tg])
+
   return (
     <CartProvider>
       <div className="App">

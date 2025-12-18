@@ -1,22 +1,34 @@
-import '@twa-dev/sdk'
-import React from 'react'
+import WebApp from '@twa-dev/sdk'
+import { useEffect, useState } from 'react'
 
 export const useTelegram = () => {
-  const tg = (window as any).Telegram?.WebApp
-  const user = tg?.initDataUnsafe?.user || null
+  const [user, setUser] = useState(WebApp.initDataUnsafe?.user || null)
+
+  useEffect(() => {
+    // Ждем, пока SDK будет готово
+    WebApp.ready()
+
+    // Пример получения данных пользователя
+    if (WebApp.initDataUnsafe?.user) {
+      setUser(WebApp.initDataUnsafe.user)
+    }
+  }, [])
 
   const showMainButton = (text: string, onClick: () => void) => {
-    if (!tg) return
-    tg.MainButton.setText(text)
-    tg.MainButton.show()
-    tg.MainButton.onClick(onClick)
+    WebApp.MainButton.setText(text)
+    WebApp.MainButton.show()
+    WebApp.MainButton.onClick(onClick)
   }
 
   const hideMainButton = () => {
-    if (!tg) return
-    tg.MainButton.hide()
-    tg.MainButton.offClick(() => {})
+    WebApp.MainButton.hide()
+    WebApp.MainButton.offClick(() => {})
   }
 
-  return { tg, user, showMainButton, hideMainButton }
+  return {
+    tg: WebApp,
+    user,
+    showMainButton,
+    hideMainButton
+  }
 }

@@ -1,6 +1,7 @@
 # Build stage
 FROM node:18-alpine AS build
 WORKDIR /app
+# Cache bust: 1
 COPY package.json package-lock.json* ./
 RUN npm install --legacy-peer-deps
 COPY . .

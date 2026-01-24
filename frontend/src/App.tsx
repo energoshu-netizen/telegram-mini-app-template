@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import MenuPage from './pages/MenuPage'
 import CartPage from './pages/CartPage'
 import OrderPage from './pages/OrderPage'
+import ProductPage from './pages/ProductPage'
 import './App.css'
 
 export default function App() {

@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview --port 3000 --strictPort"
   },
   "dependencies": {
-    "@twa-dev/sdk": "^1.0.11",
+    "@twa-dev/sdk": "^8.0.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.8",
@@ -20,11 +21,5 @@
     "typescript": "^5.6.3",
     "vite": "^5.4.9"
   },
-  "overrides": {},
-  "dependencies": {
-    "@twa-dev/sdk": "^1.0.11",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.0"
-  }
+  "overrides": {}
 }

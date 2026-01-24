@@ -4,16 +4,22 @@ import { useTelegram } from './hooks/useTelegram'
 import { CartProvider } from './context/CartContext'
 import HomePage from './pages/HomePage'
 import MenuPage from './pages/MenuPage'
+import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
 import OrderPage from './pages/OrderPage'
 import './App.css'
 
 export default function App() {
   const { tg } = useTelegram()
+
   useEffect(() => {
-    tg.ready()
-    tg.expand()
+    // SDK уже инициализируется в хуке,
+    // но мы можем выполнять дополнительные действия здесь
+    if (tg) {
+      tg.expand()
+    }
   }, [tg])
+
   return (
     <CartProvider>
       <div className="App">
